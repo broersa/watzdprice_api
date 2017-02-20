@@ -4,7 +4,7 @@
  */
 
 var pg = require('pg');
-var MyError = require('../Myerror.js');
+var MyError = require('../MyError.js');
 
 var pool;
 
