@@ -9,6 +9,8 @@ var config = require('config');
 var conn = require('./dal/pgConnection.js');
 var elasticsearch = require('./dal/elasticsearch.js');
 
+console.log(config);
+
 conn.init({
   dbUser: config.dbUser,
   dbPassword: config.dbPassword,

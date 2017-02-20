@@ -38,7 +38,6 @@ module.exports.searchproductsGET = function searchproductsGET (req, res, next) {
     elasticsearch.searchProducts(client, req.swagger.params.q.value, function (err, products) {
       if (err) {
         console.error('searchproductsGET - ' + JSON.stringify(req.swagger.params) + err.print());
-        conn.rollback(client, done);
         return next(err);
       }
 
