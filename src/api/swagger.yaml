@@ -1,0 +1,131 @@
+---
+swagger: "2.0"
+info:
+  description: "Watzdprice Public API"
+  version: "0.0.1"
+  title: "Watzdprice Public API"
+#host: "grid_connection_configuration_service.enman.eu"
+#basePath: "/v0_0_1"
+schemes:
+- "http"
+produces:
+- "application/json"
+paths:
+  /searchproducts:
+    get:
+      tags:
+      - "Product"
+      summary: "Search the Watzdprice database"
+      description: "Search the Watzdprice database"
+      operationId: "searchproductsGET"
+      parameters:
+      - name: "apikey"
+        in: "header"
+        description: "the apikey"
+        type: "string"
+        required: true
+      - name: "offset"
+        in: "query"
+        description: "offset of the results"
+        required: false
+        type: "integer"
+        default: 0
+        minimum: 0
+      - name: "limit"
+        in: "query"
+        description: "limit of the results"
+        required: false
+        type: "integer"
+        default: 10
+        minimum: 1
+        maximum: 50
+      - name: q
+        in: query
+        description: "the query terms separated by spaces"
+        type: string
+        required: true
+      responses:
+        200:
+          description: "Result set of the query"
+          schema:
+            $ref: "#/definitions/searchproducts"
+        403:
+          description: "Forbidden"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Product"
+  /getproduct:
+    get:
+      tags:
+      - "Product"
+      summary: "Get the Watzdprice product details"
+      description: "Get the Watzdprice product details"
+      operationId: "getproductGET"
+      parameters:
+      - name: "apikey"
+        in: "header"
+        description: "the apikey"
+        type: "string"
+        required: true
+      - name: id
+        in: query
+        description: "the product id"
+        type: string
+        required: true
+      responses:
+        200:
+          description: "The found product"
+          schema:
+            $ref: "#/definitions/getproduct"
+        403:
+          description: "Forbidden"
+        default:
+          description: "Unexpected error"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Product"
+definitions:
+  Error:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      message:
+        type: "string"
+      fields:
+        type: "string"
+  searchproducts_product:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "Id of the product"
+      name:
+        type: "string"
+        description: "Name of the product"
+      description:
+        type: "string"
+        description: "Description of the product"
+  searchproducts:
+    type: "object"
+    properties:
+      products:
+        type: "array"
+        description: "The requested resultset"
+        items:
+          $ref: "#/definitions/searchproducts_product"
+  getproduct:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "Id of the product"
+      name:
+        type: "string"
+        description: "Name of the product"
+      description:
+        type: "string"
+        description: "Description of the product"

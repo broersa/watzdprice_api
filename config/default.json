@@ -1,0 +1,10 @@
+{
+  "dbHost": "dbhost",
+  "dbUser": "dbuser",
+  "dbPassword": "dbpassword",
+  "dbDatabase": "dbdatabase",
+  "elasticUrl": "WATZDPRICE_API_ELASTIC_INDEX",
+  "elasticIndex": "WATZDPRICE_API_ELASTIC_INDEX",
+  "elasticQuery": "WATZDPRICE_API_ELASTIC_QUERY",
+  "serverPort": "8080"
+}
