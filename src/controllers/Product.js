@@ -16,7 +16,7 @@ module.exports.getproductGET = function getproductGET (req, res, next) {
       }
       dal.getProduct(client, req.swagger.params.id.value, function (err, product) {
         if (err) {
-          log.error('getproductGET - ' + JSON.stringify(req.swagger.params) + err.print());
+          console.error('getproductGET - ' + JSON.stringify(req.swagger.params) + err.print());
           conn.rollback(client, done);
           return next(err);
         }
@@ -37,7 +37,7 @@ module.exports.searchproductsGET = function searchproductsGET (req, res, next) {
     var client = elasticsearch.startSession();
     elasticsearch.searchProducts(client, req.swagger.params.q.value, function (err, products) {
       if (err) {
-        log.error('searchproductsGET - ' + JSON.stringify(req.swagger.params) + err.print());
+        console.error('searchproductsGET - ' + JSON.stringify(req.swagger.params) + err.print());
         conn.rollback(client, done);
         return next(err);
       }
