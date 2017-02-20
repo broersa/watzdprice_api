@@ -12,7 +12,7 @@ module.exports = {
     query = elasticQuery;
     return true;
   },
-  startSession: function(url) {
+  startSession: function() {
     return new elasticsearch.Client({
       host: url
     });
