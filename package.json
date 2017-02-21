@@ -30,6 +30,7 @@
     "moment": "^2.17.1",
     "pg": "^6.1.2",
     "swagger-tools": "0.10.1",
+    "universal-analytics": "^0.4.9",
     "urlify": "^0.3.6"
   }
 }

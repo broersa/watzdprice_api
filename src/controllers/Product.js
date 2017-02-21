@@ -3,8 +3,11 @@
 var conn = require('../dal/pgConnection.js');
 var dal = require('../dal/watzdprice.js');
 var elasticsearch = require('../dal/elasticsearch.js');
+var log = require('../log.js');
 
 module.exports.getproductGET = function getproductGET (req, res, next) {
+  var visitor = log.getLogger();
+  visitor.event('getproduct', req.swagger.params.apikey.value, req.swagger.params.id.value, 1, {uid: req.swagger.params.apikey.value, uip: req.headers['x-forwarded-for'] || req.connection.remoteAddress, ua: req.headers['user-agent']}).send();
   if (req.swagger.params.apikey.value !== 'andre') {
     res.statusCode = 403;
     return res.end();
@@ -30,6 +33,8 @@ module.exports.getproductGET = function getproductGET (req, res, next) {
 };
 
 module.exports.searchproductsGET = function searchproductsGET (req, res, next) {
+  var visitor = log.getLogger();
+  visitor.event('searchproducts', req.swagger.params.apikey.value, req.swagger.params.q.value, 1, {uid: req.swagger.params.apikey.value, uip: req.headers['x-forwarded-for'] || req.connection.remoteAddress, ua: req.headers['user-agent']}).send();
   if (req.swagger.params.apikey.value !== 'andre') {
     res.statusCode = 403;
     return res.end();

@@ -6,5 +6,6 @@
   "elasticUrl": "WATZDPRICE_API_ELASTIC_URL",
   "elasticIndex": "WATZDPRICE_API_ELASTIC_INDEX",
   "elasticQuery": "WATZDPRICE_API_ELASTIC_QUERY",
-  "serverPort": "WATZDPRICE_API_SERVERPORT"
+  "serverPort": "WATZDPRICE_API_SERVERPORT",
+  "trackingId": "WATZDPRICE_API_TRACKINGID"
 }
