@@ -6,8 +6,8 @@ info:
   title: "Watzdprice Public API"
 #host: "grid_connection_configuration_service.enman.eu"
 #basePath: "/v0_0_1"
-schemes:
-- "http"
+#schemes:
+#- "http"
 produces:
 - "application/json"
 paths:
