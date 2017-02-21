@@ -6,5 +6,6 @@
   "elasticUrl": "elasticurl",
   "elasticIndex": "elasticindex",
   "elasticQuery": "elasticquery",
-  "serverPort": "8080"
+  "serverPort": "8080",
+  "trackingId": "UA-XXX"
 }

@@ -8,6 +8,7 @@ var fs = require('fs');
 var config = require('config');
 var conn = require('./dal/pgConnection.js');
 var elasticsearch = require('./dal/elasticsearch.js');
+var log = require('./log.js');
 
 conn.init({
   dbUser: config.dbUser,
@@ -17,6 +18,8 @@ conn.init({
 });
 
 elasticsearch.init(config.elasticUrl, config.elasticIndex, config.elasticQuery);
+
+log.init(config.trackingId);
 
 // swaggerRouter configuration
 var options = {
