@@ -46,20 +46,22 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi());
 
-  app.use(function(err, req, res, next) {
+  app.use(function(err, req, res) {
     if (typeof err !== 'object') {
-      // If the object is not an Error, create a representation that appears to be
       err = {
-        message: String(err) // Coerce to string
+        message: String(err)
       };
     } else {
-      // Ensure that err.message is enumerable (It is not by default)
       Object.defineProperty(err, 'message', { enumerable: true });
     }
-
-    // Return a JSON representation of #/definitions/ErrorResponse
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(err));
+    if (err.name === 'MyError') {
+      console.error(JSON.stringify(err));
+      res.statusCode = 500;
+      res.end();
+    } else {
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify(err));
+    }
   });
 
   // Start the server

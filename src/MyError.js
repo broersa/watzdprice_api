@@ -8,9 +8,6 @@ module.exports = function MyError(code, method, message, params, error) {
   this.message = message;
   this.params = params;
   this.error = error;
-  this.print = function () {
-    return 'MyError - ' + this.code + ' - ' + this.method + ' - ' + this.message + ' - ' + JSON.stringify(this.params) + ' ---> ' + ((!this.error)?'':((this.error instanceof MyError)?this.error.print():this.error.toString()));
-  }
 };
 
 require('util').inherits(module.exports, Error);

@@ -49,12 +49,14 @@ paths:
           description: "Result set of the query"
           schema:
             $ref: "#/definitions/searchproducts"
-        403:
-          description: "Forbidden"
-        default:
-          description: "Unexpected error"
+        400:
+          description: "Bad request"
           schema:
             $ref: "#/definitions/Error"
+        403:
+          description: "Forbidden"
+        500:
+          description: "Internal error"
       x-swagger-router-controller: "Product"
   /getproduct:
     get:
@@ -79,12 +81,14 @@ paths:
           description: "The found product"
           schema:
             $ref: "#/definitions/getproduct"
-        403:
-          description: "Forbidden"
-        default:
-          description: "Unexpected error"
+        400:
+          description: "Bad request"
           schema:
             $ref: "#/definitions/Error"
+        403:
+          description: "Forbidden"
+        500:
+          description: "Internal error"
       x-swagger-router-controller: "Product"
 definitions:
   Error:
