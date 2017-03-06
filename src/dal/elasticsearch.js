@@ -33,9 +33,8 @@ module.exports = {
       }
       var products = [];
       for (var i = 0; i < result.hits.hits.length; i++) {
-        products.push({id: result.hits.hits[i]._id, name: result.hits.hits[i]._source.name});
+        products.push({id: result.hits.hits[i]._id, name: result.hits.hits[i]._source.name, description: result.hits.hits[i]._source.description, image: result.hits.hits[i]._source.image, price: result.hits.hits[i]._source.price});
       }
-
       return cb(null, products);
     });
   }
