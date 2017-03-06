@@ -113,6 +113,13 @@ definitions:
       description:
         type: "string"
         description: "Description of the product"
+      image:
+        type: "string"
+        description: "Image of the product"
+      price:
+        type: "number"
+        format: "float"
+        description: "Price of the product"
   searchproducts:
     type: "object"
     properties:
@@ -121,6 +128,16 @@ definitions:
         description: "The requested resultset"
         items:
           $ref: "#/definitions/searchproducts_product"
+  getproduct_history:
+    type: "object"
+    properties:
+      price:
+        type: "string"
+        description: "historic price of the product"
+      datetime:
+        type: "string"
+        format: "date-time"
+        description: "datetime of the historic price of the product"
   getproduct:
     type: "object"
     properties:
@@ -133,3 +150,38 @@ definitions:
       description:
         type: "string"
         description: "Description of the product"
+      shop:
+        type: "string"
+        description: "The shop name"
+        maxLength: 256
+      brand:
+        type: "string"
+        description: "The brand name"
+        maxLength: 256
+      eancode:
+        type: "string"
+        description: "The product eancode"
+        maxLength: 256
+      category:
+        type: "string"
+        description: "The product category"
+        maxLength: 256
+      url:
+        type: "string"
+        description: "The product url"
+      image:
+        type: "string"
+        description: "The product image"
+      price:
+        type: "number"
+        format: "float"
+        description: "The product price"
+      datetime:
+        type: "string"
+        format: "date-time"
+        description: "The price datetime"
+      history:
+        type: "array"
+        description: "The price history"
+        items:
+          $ref: "#/definitions/getproduct_history"
