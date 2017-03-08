@@ -90,6 +90,38 @@ paths:
         500:
           description: "Internal error"
       x-swagger-router-controller: "Product"
+  /getautocomplete:
+    get:
+      tags:
+      - "Autocomplete"
+      summary: "Search the Watzdprice database for autocompletes"
+      description: "Get the autocomplete"
+      operationId: "getautocompleteGET"
+      parameters:
+      - name: "apikey"
+        in: "header"
+        description: "the apikey"
+        type: "string"
+        required: true
+      - name: q
+        in: query
+        description: "the query terms separated by spaces"
+        type: string
+        required: true
+      responses:
+        200:
+          description: "Result set of the query"
+          schema:
+            $ref: "#/definitions/getautocomplete"
+        400:
+          description: "Bad request"
+          schema:
+            $ref: "#/definitions/Error"
+        403:
+          description: "Forbidden"
+        500:
+          description: "Internal error"
+      x-swagger-router-controller: "Autocomplete"
 definitions:
   Error:
     type: "object"
@@ -185,3 +217,11 @@ definitions:
         description: "The price history"
         items:
           $ref: "#/definitions/getproduct_history"
+  getautocomplete:
+    type: "object"
+    properties:
+      words:
+        type: "array"
+        description: "The requested resultset"
+        items:
+          type: "string"
