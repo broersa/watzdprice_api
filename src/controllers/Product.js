@@ -58,7 +58,7 @@ module.exports.searchproductsGET = function searchproductsGET (req, res, next) {
     return res.end();
   } else {
     var client = elasticsearch.startSession();
-    elasticsearch.searchProducts(client, req.swagger.params.q.value, function (err, products) {
+    elasticsearch.searchProducts(client, req.swagger.params.offset.value, req.swagger.params.limit.value, req.swagger.params.q.value, function (err, products) {
       if (err) {
         return next(new MyError('ERROR', 'searchproductsGET', 'Error', {params: req.swagger.params}, err));
       }
