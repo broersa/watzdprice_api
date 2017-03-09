@@ -17,19 +17,21 @@ module.exports = {
       host: url
     });
   },
-  searchProducts: function (client, q, cb) {
+  searchProducts: function (client, from, size, q, cb) {
     var qobject = JSON.parse(query.replace('^^^query^^^', q));
     client.search({
       index: index,
+      from: from,
+      size: size,
       body: {
         query: qobject
       }
     }, function (err, result) {
       if (err) {
-        return cb(new MyError("ERROR", "searchProducts", "Error", {q: q}, err));
+        return cb(new MyError("ERROR", "searchProducts", "Error", {from: from, size: size, q: q}, err));
       }
       if (result.hits.total <= 0) {
-        return cb(null, null);
+        return cb(null, []);
       }
       var products = [];
       for (var i = 0; i < result.hits.hits.length; i++) {
