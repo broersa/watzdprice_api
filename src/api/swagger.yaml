@@ -81,6 +81,8 @@ paths:
           description: "The found product"
           schema:
             $ref: "#/definitions/getproduct"
+        204:
+          description: "Product not found"
         400:
           description: "Bad request"
           schema:
