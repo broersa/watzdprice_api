@@ -13,19 +13,19 @@ module.exports = {
         return callback(null, null);
       }
       callback(null, {
-        prokey: parseInt(result.rows[0].prokey),
-        proid: result.rows[0].proid,
-        proname: result.rows[0].proname,
-        proshop: result.rows[0].proshop,
-        probrand: result.rows[0].probrand,
-        proean: result.rows[0].proean,
-        procategory: result.rows[0].procategory,
-        procreated: moment(result.rows[0].procreated),
-        prolastupdate: moment(result.rows[0].prolastupdate),
-        proprice: parseFloat(result.rows[0].proprice),
-        prodescription: result.rows[0].prodescription,
-        prourl: result.rows[0].prourl,
-        proimage: result.rows[0].proimage
+        key: parseInt(result.rows[0].prokey),
+        id: result.rows[0].proid,
+        name: result.rows[0].proname,
+        shop: result.rows[0].proshop,
+        brand: result.rows[0].probrand,
+        ean: result.rows[0].proean,
+        category: result.rows[0].procategory,
+        created: moment(result.rows[0].procreated),
+        lastupdate: moment(result.rows[0].prolastupdate),
+        price: parseFloat(result.rows[0].proprice),
+        description: result.rows[0].prodescription,
+        url: result.rows[0].prourl,
+        image: result.rows[0].proimage
       });
     });
   },

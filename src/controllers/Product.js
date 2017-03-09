@@ -24,7 +24,22 @@ module.exports.getproductGET = function getproductGET (req, res, next) {
         }
         conn.commit(client, done);
         res.statusCode = 200;
-        return res.end(JSON.stringify({product: product}));
+        return res.end(JSON.stringify({
+          product: {
+            id: product.id,
+            name: product.name,
+            shop: product.shop,
+            brand: product.brand,
+            ean: product.ean,
+            category: product.category,
+            created: product.created,
+            lastupdate: product.lastupdate,
+            price: product.price,
+            description: product.description,
+            url: product.url,
+            image: product.image
+          }
+        }));
       });
     });
   }
