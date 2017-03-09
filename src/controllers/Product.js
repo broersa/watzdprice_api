@@ -23,7 +23,12 @@ module.exports.getproductGET = function getproductGET (req, res, next) {
           return next(new MyError('ERROR', 'getproductGET', 'Error', {params: req.swagger.params}, err));
         }
         conn.commit(client, done);
+        if (!product) {
+          res.statusCode = 204;
+          return res.end();
+        }
         res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
         return res.end(JSON.stringify({
           product: {
             id: product.id,
@@ -58,6 +63,7 @@ module.exports.searchproductsGET = function searchproductsGET (req, res, next) {
         return next(new MyError('ERROR', 'searchproductsGET', 'Error', {params: req.swagger.params}, err));
       }
       res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
       return res.end(JSON.stringify({products: products}));
     });
   }
