@@ -7,5 +7,6 @@
   "elasticIndex": "elasticindex",
   "elasticQuery": "elasticquery",
   "serverPort": "8080",
-  "trackingId": "UA-XXX"
+  "trackingId": "UA-XXX",
+  "apiKey": "unknown"
 }

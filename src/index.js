@@ -40,6 +40,16 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   // Validate Swagger requests
   app.use(middleware.swaggerValidator());
 
+  app.use(function (req, res, next) {
+    if (!req.swagger || !req.swagger.params || !req.swagger.params.apikey || !req.swagger.params.apikey.value) return next();
+    if (req.swagger.params.apikey.value !== config.apiKey) {
+      res.setHeader('Content-Type', 'application/json');
+      res.statusCode = 403;
+      return res.end();
+    }
+    return next();
+  });
+
   // Route validated requests to appropriate controller
   app.use(middleware.swaggerRouter(options));
 
@@ -56,6 +66,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     }
     if (err.name === 'MyError') {
       console.error(JSON.stringify(err));
+      res.setHeader('Content-Type', 'application/json');
       res.statusCode = 500;
       res.end();
     } else {
