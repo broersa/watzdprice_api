@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  description: "Watzdprice Public API"
+  description: "Watzdprice Public API - request an api-key at broersa@gmail.com"
   version: "0.0.1"
   title: "Watzdprice Public API"
 #host: "grid_connection_configuration_service.enman.eu"
